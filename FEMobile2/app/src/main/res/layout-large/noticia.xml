@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment
+        android:layout_weight="40"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:name="com.feunju.fragment.NoticiaFragment"
+        android:id="@+id/fragment2"
+        tools:layout="@layout/noticia_listado_fragment" />
+
+    <fragment
+        android:layout_weight="60"
+        android:layout_width="match_parent"
+        android:layout_height="0px"
+        android:name="com.feunju.fragment.NoticiaDetalleFragment"
+        android:id="@+id/fragment3"
+        tools:layout="@layout/noticia_detalle_fragment" />
+</LinearLayout>
