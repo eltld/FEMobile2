@@ -54,13 +54,16 @@ public class NoticiaListadoFragment extends ListFragment{
     }
 
 
-
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
         //Creamos instancia de RequestQueue que solo recibe del contexto
        final View view= inflater.inflate(R.layout.noticia_listado_fragment, container, false);
 
@@ -129,6 +132,9 @@ public class NoticiaListadoFragment extends ListFragment{
 
         // Ejecutamos Volley, con el request preparado
         queue.add(req);
+
+
+        setHasOptionsMenu(true);
         return view;
     }
 
@@ -162,7 +168,8 @@ public class NoticiaListadoFragment extends ListFragment{
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_main, menu);
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.menu_noticia,menu);
+
     }
 }

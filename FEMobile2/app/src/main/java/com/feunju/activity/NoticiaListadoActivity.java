@@ -63,7 +63,7 @@ public class NoticiaListadoActivity extends FragmentActivity implements NoticiaL
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-       getMenuInflater().inflate(R.menu.menu_noticia,menu);
+        getMenuInflater().inflate(R.menu.menu_main,menu);
         super.onCreateOptionsMenu(menu);
         return true;
     }
