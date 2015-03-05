@@ -1,2 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <item name="noticia_panel" type="layout">@layout/noticia_listado_activity</item>
+</resources>

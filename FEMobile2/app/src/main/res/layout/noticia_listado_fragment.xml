@@ -1,10 +1,10 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" tools:context="com.feunju.fragment.NoticiaFragment">
+    android:layout_height="match_parent" tools:context="com.feunju.fragment.NoticiaListadoFragment">
 
 
     <ListView
-        android:id="@+id/custom_list_noticia"
+        android:id="@+id/android:list"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:dividerHeight="1dp" />

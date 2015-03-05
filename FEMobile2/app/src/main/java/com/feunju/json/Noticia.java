@@ -1,9 +1,11 @@
 package com.feunju.json;
 
+import java.io.Serializable;
+
 /**
  * Created by MITO on 25/02/2015.
  */
-public final class NoticiaTag {
+public final class Noticia implements Serializable{
 
     private String noticia_id;
     private String noticia_titulo;

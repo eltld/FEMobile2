@@ -5,12 +5,12 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.feunju.R;
-import com.feunju.json.NoticiaTag;
+import com.feunju.json.Noticia;
 
 import java.util.ArrayList;
 
@@ -18,9 +18,9 @@ import java.util.ArrayList;
 /**
  * Created by David Garcia on 24/02/2015.
  */
-public class CustomNoticiaAdapter extends BaseAdapter {
+public class CustomNoticiaAdapter extends ArrayAdapter<Noticia> {
 
-    private ArrayList<NoticiaTag> listData;
+    private ArrayList<Noticia> listData;
     private LayoutInflater layoutInflater;
     private java.util.logging.Logger logger;
     private String[] imageUrls;
@@ -28,11 +28,12 @@ public class CustomNoticiaAdapter extends BaseAdapter {
 
 
 
-    public CustomNoticiaAdapter(Context context,ArrayList<NoticiaTag> listData)
+    public CustomNoticiaAdapter(Context context,ArrayList<Noticia> listData)
     {
+         super(context,0,listData);
         int i=0;
         imageUrls=new String[listData.size()];
-        for(NoticiaTag noticia : listData)
+        for(Noticia noticia : listData)
         {
             imageUrls[i]=noticia.getNoticia_url_image();
             i++;
@@ -50,10 +51,7 @@ public class CustomNoticiaAdapter extends BaseAdapter {
         return listData.size();
     }
 
-    @Override
-    public Object getItem(int position) {
-        return null;
-    }
+
 
     @Override
     public long getItemId(int position) {
@@ -80,7 +78,7 @@ public class CustomNoticiaAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-        NoticiaTag noticia = (NoticiaTag) listData.get(position);
+        Noticia noticia = (Noticia) listData.get(position);
 
         String titulo="";
         String bajada="";

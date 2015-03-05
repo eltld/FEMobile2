@@ -4,19 +4,12 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <fragment
-        android:layout_weight="40"
-        android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:name="com.feunju.fragment.NoticiaFragment"
-        android:id="@+id/fragment2"
-        tools:layout="@layout/noticia_listado_fragment" />
 
     <fragment
-        android:layout_weight="60"
         android:layout_width="match_parent"
-        android:layout_height="0px"
-        android:name="com.feunju.fragment.NoticiaDetalleFragment"
-        android:id="@+id/fragment3"
-        tools:layout="@layout/noticia_detalle_fragment" />
+        android:layout_height="wrap_content"
+        android:name="com.feunju.fragment.NoticiaListadoFragment"
+        android:id="@+id/fragment2"
+        android:layout_gravity="center_horizontal"
+        tools:layout="@layout/noticia_listado_fragment" />
 </LinearLayout>

@@ -52,11 +52,19 @@
 
         </activity>
         <activity
-            android:name="com.feunju.activity.ActivityNoticia"
+            android:name=".activity.NoticiaListadoActivity"
             android:label="@string/str_noticia"
             android:screenOrientation="portrait">
-
         </activity>
+        <activity
+            android:name=".activity.NoticiaDetalleActivity"
+            android:label="@string/str_noticia"
+            android:screenOrientation="portrait">
+        </activity>
+
+
+
+
 
     </application>
 

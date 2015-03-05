@@ -1,14 +1,18 @@
 package com.feunju.fragment;
 
-import android.app.Fragment;
+import android.app.Activity;
+import android.app.ListFragment;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -18,7 +22,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.feunju.R;
 import com.feunju.adapter.CustomNoticiaAdapter;
-import com.feunju.json.NoticiaTag;
+import com.feunju.json.Noticia;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -29,48 +33,48 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class NoticiaFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class NoticiaListadoFragment extends ListFragment{
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+
+    ListItemNoticiaFragmentItemClickListener  ifaceItemClickListener;
+    /**interface para definir el callback del metodo**/
+    public interface ListItemNoticiaFragmentItemClickListener
+    {  /** This method will be invoked when an item in the ListFragment is clicked */
+    void onListFragmentItemClick(Noticia noticia);
+    }
 
 
     private Button btn_noticia;
     private ProgressDialog pd;
-
-
-
-
-
-
-    public NoticiaFragment() {
+    ArrayList<Noticia> listDataNoticia;
+    ListView list;
+    CustomNoticiaAdapter adapter;
+    public NoticiaListadoFragment() {
         // Required empty public constructor
     }
+
+
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
         //Creamos instancia de RequestQueue que solo recibe del contexto
        final View view= inflater.inflate(R.layout.noticia_listado_fragment, container, false);
 
-        RequestQueue queue= Volley.newRequestQueue(view.getContext());
+
+        RequestQueue queue= Volley.newRequestQueue(getActivity());
 
         //String Url
         String IP_LOCAL="10.2.0.3";
         String URL_BASE="http://"+IP_LOCAL+"/php/";
-        String URL_BASE_NOTICIAS="http://"+IP_LOCAL+"/noticias/imgnotis/";
         String URL_NOTICIAS=URL_BASE+"noticias.php";
 
 
         //Creamos una instancia de un ProgressDialog para que el usuario observe que los datos se estan obteniendo
-        pd = new ProgressDialog(view.getContext());
+        pd = new ProgressDialog(getActivity());
         pd.setMessage("Espere cargando...");
         pd.setCancelable(false);
         //Configuramos nuestro request, al intanciar JsonArrayRequest recibe la URL y un Listener de JSON Array, el cual
@@ -94,26 +98,24 @@ public class NoticiaFragment extends Fragment {
 
                 Gson gson=new Gson();
                 //toJson
-                Type tipoListaNoticia = new TypeToken<List<NoticiaTag>>(){}.getType();
+                Type tipoListaNoticia = new TypeToken<List<Noticia>>(){}.getType();
 
-                ArrayList<NoticiaTag> listNoticia= gson.fromJson(response.toString(),tipoListaNoticia);
+                listDataNoticia = gson.fromJson(response.toString(),tipoListaNoticia);
 
-                System.out.println("listNoticia : "+listNoticia.size());
-
-                //buscamos el listview de main_activity
-                ListView list = (ListView) view.findViewById(R.id.custom_list_noticia);
+                System.out.println("listData "+listDataNoticia.size());
 
                 //Si vemos el CustomAdapter debemos pasar un contexto y un ArrayList de objetos Noticias
                 //dicho ArrayList es parseao de la respuesta por medio de la funcion parser
+                System.out.println("listDataNoticia : "+listDataNoticia.size());
 
-                CustomNoticiaAdapter adapter;
-                adapter = new CustomNoticiaAdapter(view.getContext(),listNoticia);
+                adapter = new CustomNoticiaAdapter(view.getContext(), listDataNoticia);
                 //pasamos el adapter para que la lista se muestre en el UI
-                System.out.println("adapter  :"+adapter + " list :"+list);
-                list.setAdapter(adapter);
+                System.out.println("adapter  :" + adapter + " list :" + list);
+                setListAdapter(adapter);
 
+
+                //oculto el progress bar
                 pd.hide();
-
 
             }
         }, new Response.ErrorListener() {
@@ -127,11 +129,40 @@ public class NoticiaFragment extends Fragment {
 
         // Ejecutamos Volley, con el request preparado
         queue.add(req);
-        // Inflate the layout for this fragment
         return view;
     }
 
+    /** A callback function, executed when this fragment is attached to an activity */
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try{
+            /** This statement ensures that the hosting activity implements ListFragmentItemClickListener */
+            ifaceItemClickListener = (ListItemNoticiaFragmentItemClickListener) activity;
+        }catch(Exception e){
+            Toast.makeText(activity.getBaseContext(), "Exception", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
 
+    }
 
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+       System.out.println("onListItemClick noticia : "+position);
+        System.out.println("adapter : "+adapter);
+       Noticia noticia= (Noticia) adapter.getItem(position);
+       ifaceItemClickListener.onListFragmentItemClick(noticia);
+    }
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_noticia,menu);
+    }
 }

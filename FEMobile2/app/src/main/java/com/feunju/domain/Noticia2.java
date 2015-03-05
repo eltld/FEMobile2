@@ -2,10 +2,14 @@ package com.feunju.domain;
 
 import android.graphics.drawable.Drawable;
 
+import java.io.Serializable;
+
 /**
  * Created by David Garcia on 24/02/2015.
  */
-public class Noticia {
+public class Noticia2 implements Serializable{
+
+
 
     private String idNoticia;
     private String tituloNoticia;
