@@ -8,7 +8,7 @@
     <fragment
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:name="com.feunju.fragment.NoticiaListadoFragment"
+        android:name="com.feunju.edu.fragment.NoticiaListadoFragment"
         android:id="@+id/fragment2"
         android:layout_gravity="center_horizontal"
         tools:layout="@layout/noticia_listado_fragment" />

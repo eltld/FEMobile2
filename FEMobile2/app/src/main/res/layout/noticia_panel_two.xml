@@ -10,7 +10,7 @@
 
 
     <fragment
-        android:name="com.feunju.fragment.NoticiaListadoFragment"
+        android:name="com.feunju.edu.fragment.NoticiaListadoFragment"
         android:id="@+id/fragment"
         android:layout_height="wrap_content"
         android:layout_width="0dp"
