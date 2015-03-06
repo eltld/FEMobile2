@@ -74,6 +74,8 @@ public class NoticiaListadoFragment extends ListFragment {
         String IP_LOCAL="10.2.0.3";
         String IP_REMOTE="200.45.224.18";
         String URL_BASE="http://"+IP_LOCAL+"/php/";
+        String URL_BASE_NOTICIAS="http://"+IP_LOCAL+"/noticias/imgnotis/";
+
         String URL_NOTICIAS=URL_BASE+"noticias.php";
 
 

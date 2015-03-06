@@ -6,11 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.NetworkImageView;
 import com.feunju.edu.R;
 import com.feunju.edu.json.Noticia;
+import com.feunju.edu.singleton.SingletonVolley;
 
 import java.util.ArrayList;
 
@@ -24,23 +26,34 @@ public class CustomNoticiaAdapter extends ArrayAdapter<Noticia> {
     private LayoutInflater layoutInflater;
     private java.util.logging.Logger logger;
     private String[] imageUrls;
-    private Context myContext;
+    ImageLoader imageLoader;
+    NetworkImageView networkImageView;
+
 
 
 
     public CustomNoticiaAdapter(Context context,ArrayList<Noticia> listData)
     {
-         super(context,0,listData);
+
+
+        super(context,0,listData);
         int i=0;
         imageUrls=new String[listData.size()];
+        String IP_LOCAL="10.2.0.3";
+        String URL_BASE_NOTICIAS="http://"+IP_LOCAL+"/noticias/imgnotis/";
+        String tmp="";
+
         for(Noticia noticia : listData)
         {
-            imageUrls[i]=noticia.getNoticia_url_image();
+            tmp=noticia.getNoticia_url_image();
+            imageUrls[i]=URL_BASE_NOTICIAS+tmp.replace("./imgnotis/","");
             i++;
         }
         System.out.println("CustonNewsAdapter count : "+listData.size());
         this.listData=listData;
 
+        //singleton instance
+        imageLoader= SingletonVolley.getInstance(getContext()).getImageLoader(); //singleton imageLoader
 
         layoutInflater=LayoutInflater.from(context);
     }
@@ -68,10 +81,16 @@ public class CustomNoticiaAdapter extends ArrayAdapter<Noticia> {
             System.out.println("convertview null");
             //se obtiene
             convertView = layoutInflater.inflate(R.layout.noticia_single,null);
+
+
+            if(imageLoader==null)
+                imageLoader= SingletonVolley.getInstance(getContext()).getImageLoader(); //singleton imageLoader
+
+
             holder = new ViewHolder();
+            holder.noticiaImageView=(NetworkImageView) convertView.findViewById(R.id.noticia_noticiaImage);
             holder.noticiaHead = (TextView) convertView.findViewById(R.id.noticia_noticiaTitulo);
             holder.noticiaBajada = (TextView) convertView.findViewById(R.id.noticia_noticiaBajada);
-            holder.noticiaImageView = (ImageView) convertView.findViewById(R.id.noticia_noticiaImage);
             holder.noticiaId=(TextView)convertView.findViewById(R.id.noticia_noticiaId);
             convertView.setTag(holder);
         } else {
@@ -98,6 +117,12 @@ public class CustomNoticiaAdapter extends ArrayAdapter<Noticia> {
         holder.noticiaId.setText(noticia.getNoticia_id());
         holder.noticiaId.setVisibility(View.GONE);
 
+        System.out.println("url "+imageUrls[position]);
+        //load image
+        holder.noticiaImageView.setDefaultImageResId(R.drawable.ic_launcher);
+        holder.noticiaImageView.setErrorImageResId(R.drawable.ic_launcher);
+        holder.noticiaImageView.setAdjustViewBounds(true);
+        holder.noticiaImageView.setImageUrl(imageUrls[position], imageLoader);
 
 
         //envio a cargar asyncTask la image
@@ -117,6 +142,7 @@ public class CustomNoticiaAdapter extends ArrayAdapter<Noticia> {
         TextView noticiaHead;
         TextView noticiaBajada;
         TextView noticiaId;
-        ImageView noticiaImageView;
+        NetworkImageView noticiaImageView;
+
     }
 }
