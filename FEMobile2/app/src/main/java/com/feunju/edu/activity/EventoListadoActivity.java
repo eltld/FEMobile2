@@ -8,14 +8,14 @@ import android.view.Menu;
 import android.widget.FrameLayout;
 
 import com.feunju.edu.R;
-import com.feunju.edu.fragment.NoticiaDetalleFragment;
-import com.feunju.edu.fragment.NoticiaListadoFragment;
-import com.feunju.edu.json.Noticia;
+import com.feunju.edu.fragment.EventoDetalleFragment;
+import com.feunju.edu.fragment.EventoListadoFragment;
+import com.feunju.edu.json.Evento;
 
 /**
- * Created by David Garcia on 24/02/2015.
+ * Created by dgarcia on 10/03/2015.
  */
-public class NoticiaListadoActivity extends ActionBarActivity implements NoticiaListadoFragment.ListItemNoticiaFragmentItemClickListener {
+public class EventoListadoActivity extends ActionBarActivity implements EventoListadoFragment.ListItemEventoFragmentItemClickListener {
 
     private boolean isTwoPane=false;
     private ProgressDialog pd;
@@ -25,30 +25,30 @@ public class NoticiaListadoActivity extends ActionBarActivity implements Noticia
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.noticia_listado_activity);
+        setContentView(R.layout.evento_listado_activity);
         //determinate layout
         determinatePanelLayout();
 
-       getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 
 
     }
 
     @Override
-    public void onListFragmentItemClick(Noticia noticia) {
+    public void onListFragmentItemClick(Evento evento) {
         if(isTwoPane)
         {
             // single activity with list and detail
             // Replace framelayout with new detail fragment
-            NoticiaDetalleFragment fragmentItem = NoticiaDetalleFragment.newInstance(noticia);
+            EventoDetalleFragment fragmentItem = EventoDetalleFragment.newInstance(evento);
             android.app.FragmentTransaction ft=getFragmentManager().beginTransaction();
             //reemplao el fragment container con el de noticia detalle
             ft.replace(R.id.flDetailContainer, fragmentItem);
             ft.commit();
         }else {
-            Intent intent = new Intent(this, NoticiaDetalleActivity.class);
-            intent.putExtra("noticia", noticia);
+            Intent intent = new Intent(this, EventoDetalleActivity.class);
+            intent.putExtra("evento", evento);
             startActivity(intent);
         }
     }
@@ -72,6 +72,8 @@ public class NoticiaListadoActivity extends ActionBarActivity implements Noticia
 
         return true;
     }
+
+
 }
 
 

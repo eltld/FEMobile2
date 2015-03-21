@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/text_eventoContentTitulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:text="Titulo"
+                android:textSize="19dp"
+                android:textStyle="bold"
+                android:typeface="serif" />
+
+            <TextView
+                android:id="@+id/text_eventoContentBajada"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/text_noticiaContentTitulo"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="6dp"
+                android:text="Bajada"
+                android:textColor="@color/gray"
+                android:textSize="15dp"
+                android:typeface="sans" />
+
+            <TextView
+                android:id="@+id/text_eventoContentFecha"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fecha"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp"
+                android:typeface="normal"
+                android:textColor="@color/gray"
+                android:layout_marginLeft="20dp" />
+
+            <TextView
+                android:id="@+id/text_noticiaLineaUno"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_alignParentLeft="true"
+                android:background="@color/gray_claro"
+                android:layout_below="@+id/text_noticiaContentBajada"
+                android:layout_marginTop="3dp"
+
+                />
+
+
+            <TextView
+                android:id="@+id/text_eventoContentCuerpo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/image_noticiaContentImage"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="6dp"
+                android:text="Cuerpo"
+                />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

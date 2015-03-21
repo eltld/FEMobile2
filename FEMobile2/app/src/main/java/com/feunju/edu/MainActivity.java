@@ -8,12 +8,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import com.feunju.edu.activity.EventoListadoActivity;
+import com.feunju.edu.activity.GalleryImageActivity;
 import com.feunju.edu.activity.NoticiaListadoActivity;
 
 
 public class MainActivity extends ActionBarActivity {
 
     private Button btn_noticia;
+    private Button btn_evento;
+    private Button btn_galeria;
 
 
     @Override
@@ -21,8 +25,17 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btn_noticia=(Button) findViewById(R.id.btn_noticia);
+         btn_noticia=(Button) findViewById(R.id.btn_noticia);
+         btn_evento=(Button)findViewById(R.id.btn_evento);
+         btn_galeria=(Button)findViewById(R.id.btn_galeria);
 
+      btn_galeria.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              Intent intent=new Intent(MainActivity.this,GalleryImageActivity.class);
+              startActivity(intent);
+          }
+      });
 
       btn_noticia.setOnClickListener(new View.OnClickListener() {
           @Override
@@ -34,8 +47,17 @@ public class MainActivity extends ActionBarActivity {
       });
 
 
-    }
+     btn_evento.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
 
+             Intent intent=new Intent(MainActivity.this,EventoListadoActivity.class);
+             startActivity(intent);
+         }
+     });
+
+
+}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

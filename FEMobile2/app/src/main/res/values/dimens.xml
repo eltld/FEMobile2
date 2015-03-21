@@ -2,4 +2,18 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+
+    <!-- noticia -->
+    <dimen name="noticia_noticiaVolanta">8dp</dimen>
+    <dimen name="noticia_noticiaTitulo">14dp</dimen>
+    <dimen name="noticia_noticiaBajada">11dp</dimen>
+
+    <!-- evento -->
+    <dimen name="evento_eventoVolanta">8dp</dimen>
+    <dimen name="evento_eventoMes">16dp</dimen>
+    <dimen name="evento_eventoDia">20dp</dimen>
+    <dimen name="evento_eventoTitulo">12dp</dimen>
+    <dimen name="evento_eventoHorario">12dp</dimen>
+
 </resources>

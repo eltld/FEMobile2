@@ -10,7 +10,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -21,12 +20,11 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.feunju.edu.R;
-import com.feunju.edu.adapter.CustomNoticiaAdapter;
-import com.feunju.edu.json.Noticia;
+import com.feunju.edu.adapter.CustomEventoAdapter;
+import com.feunju.edu.constant.ConstantRest;
+import com.feunju.edu.json.Evento;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.nostra13.universalimageloader.core.DisplayImageOptions;
-import com.nostra13.universalimageloader.core.ImageLoader;
 
 import org.json.JSONArray;
 
@@ -34,28 +32,27 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Created by David Garcia on 10/03/2015.
+ */
+public class EventoListadoFragment  extends ListFragment {
 
-public class NoticiaListadoFragment extends ListFragment {
 
-
-    ListItemNoticiaFragmentItemClickListener  ifaceItemClickListener;
+    ListItemEventoFragmentItemClickListener  ifaceItemClickListener;
     /**interface para definir el callback del metodo**/
-    public interface ListItemNoticiaFragmentItemClickListener
+    public interface ListItemEventoFragmentItemClickListener
     {  /** This method will be invoked when an item in the ListFragment is clicked */
-    void onListFragmentItemClick(Noticia noticia);
+    void onListFragmentItemClick(Evento evento);
     }
 
 
-    private Button btn_noticia;
     private ProgressDialog pd;
-    ArrayList<Noticia> listDataNoticia;
-    ListView listView;
-    DisplayImageOptions options;
-    protected ImageLoader imageLoader;
+    ArrayList<Evento> listData;
 
 
-    CustomNoticiaAdapter adapter;
-    public NoticiaListadoFragment() {
+    CustomEventoAdapter adapter;
+
+    public EventoListadoFragment() {
         // Required empty public constructor
     }
 
@@ -71,22 +68,12 @@ public class NoticiaListadoFragment extends ListFragment {
                              Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Creamos instancia de RequestQueue que solo recibe del contexto
-       final View view= inflater.inflate(R.layout.noticia_listado_fragment, container, false);
+        final View view= inflater.inflate(R.layout.evento_listado_fragment, container, false);
 
         //configuration image options
         //configuration image loader
 
-
-
         RequestQueue queue= Volley.newRequestQueue(getActivity());
-
-        //String Url
-        String IP_LOCAL="10.2.0.3";
-        String IP_REMOTE="200.45.224.18";
-        String URL_BASE="http://"+IP_LOCAL+"/php/";
-        String URL_BASE_NOTICIAS="http://"+IP_LOCAL+"/noticias/imgnotis/";
-
-        String URL_NOTICIAS=URL_BASE+"noticias.php";
 
 
 
@@ -103,7 +90,7 @@ public class NoticiaListadoFragment extends ListFragment {
         pd.show();
 
         Log.e("ingreso", "informacion");
-        JsonArrayRequest req = new JsonArrayRequest(URL_NOTICIAS, new Response.Listener<JSONArray> () {
+        JsonArrayRequest req = new JsonArrayRequest(ConstantRest.URL_EVENTO, new Response.Listener<JSONArray> () {
 
             @Override
             public void onResponse(JSONArray response) {
@@ -116,22 +103,22 @@ public class NoticiaListadoFragment extends ListFragment {
 
                 Gson gson=new Gson();
                 //toJson
-                Type tipoListaNoticia = new TypeToken<List<Noticia>>(){}.getType();
+                Type tipoListEvento = new TypeToken<List<Evento>>(){}.getType();
 
-                listDataNoticia = gson.fromJson(response.toString(),tipoListaNoticia);
+                listData = gson.fromJson(response.toString(),tipoListEvento);
 
-                System.out.println("listData "+listDataNoticia.size());
+                System.out.println("listData "+listData.size());
 
                 //Si vemos el CustomAdapter debemos pasar un contexto y un ArrayList de objetos Noticias
                 //dicho ArrayList es parseao de la respuesta por medio de la funcion parser
-                System.out.println("listDataNoticia : "+listDataNoticia.size());
+                System.out.println("listDataNoticia : "+listData.size());
 
-                adapter = new CustomNoticiaAdapter(view.getContext(), listDataNoticia);
+                adapter = new CustomEventoAdapter(view.getContext(), listData);
                 //pasamos el adapter para que la lista se muestre en el UI
                 //setListAdapter(adapter);
 
                 setListAdapter(adapter);
-               //oculto el progress bar
+                //oculto el progress bar
                 pd.hide();
 
             }
@@ -158,7 +145,7 @@ public class NoticiaListadoFragment extends ListFragment {
         super.onAttach(activity);
         try{
             /** This statement ensures that the hosting activity implements ListFragmentItemClickListener */
-            ifaceItemClickListener = (ListItemNoticiaFragmentItemClickListener) activity;
+            ifaceItemClickListener = (ListItemEventoFragmentItemClickListener) activity;
         }catch(Exception e){
             Toast.makeText(activity.getBaseContext(), "Exception", Toast.LENGTH_SHORT).show();
         }
@@ -173,17 +160,18 @@ public class NoticiaListadoFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
-       System.out.println("onListItemClick noticia : "+position);
+        System.out.println("onListItemClick noticia : "+position);
         System.out.println("adapter : "+adapter);
-       Noticia noticia= (Noticia) adapter.getItem(position);
-       ifaceItemClickListener.onListFragmentItemClick(noticia);
+        Evento evento= (Evento) adapter.getItem(position);
+        ifaceItemClickListener.onListFragmentItemClick(evento);
     }
 
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-       // inflater.inflate(R.menu.menu_main, menu);
+        // inflater.inflate(R.menu.menu_main, menu);
         super.onCreateOptionsMenu(menu, inflater);
 
     }
 }
+

@@ -16,4 +16,19 @@
     <color name="header_principal">#2082A5</color>
     <color name="black">#000</color>
 
+
+    <!-- color listado noticia -->
+    <color name="list_noticia_titulo">#2781a3</color>
+    <color name="list_noticia_bajada">#ef7f1a</color>
+    <color name="list_noticia_fecha">#BDBDBD</color>
+
+    <!--color evento listado-->
+    <color name="list_evento_mesdia">#ffff</color>
+    <color name="list_evento_fondoMes">#2781a3</color>
+    <color name="list_evento_fondoDia">#ef7f1a</color>
+    <color name="list_evento_horario">#BDBDBD</color>
+    <color name="list_evento_titulo">#2681A2</color>
+
+
+
 </resources>

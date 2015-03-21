@@ -3,7 +3,7 @@ package com.feunju.edu.json;
 import java.io.Serializable;
 
 /**
- * Created by MITO on 25/02/2015.
+ * Created by David Garcia on 25/02/2015.
  */
 public final class Noticia implements Serializable{
 
@@ -13,6 +13,7 @@ public final class Noticia implements Serializable{
     private String noticia_fecha;
     private String noticia_url_image;
     private String noticia_cuerpo;
+    private String noticia_volanta;
 
     public String getNoticia_id() {
         return noticia_id;
@@ -54,6 +55,14 @@ public final class Noticia implements Serializable{
         this.noticia_url_image = noticia_url_image;
     }
 
+    public String getNoticia_volanta() {
+        return noticia_volanta;
+    }
+
+    public void setNoticia_volanta(String noticia_volanta) {
+        this.noticia_volanta = noticia_volanta;
+    }
+
     public String getNoticia_cuerpo() {
         return noticia_cuerpo;
     }
@@ -64,13 +73,14 @@ public final class Noticia implements Serializable{
 
     @Override
     public String toString() {
-        return "NoticiaTag{" +
+        return "Noticia{" +
                 "noticia_id='" + noticia_id + '\'' +
                 ", noticia_titulo='" + noticia_titulo + '\'' +
                 ", noticia_bajada='" + noticia_bajada + '\'' +
                 ", noticia_fecha='" + noticia_fecha + '\'' +
                 ", noticia_url_image='" + noticia_url_image + '\'' +
                 ", noticia_cuerpo='" + noticia_cuerpo + '\'' +
+                ", noticia_volanta='" + noticia_volanta + '\'' +
                 '}';
     }
 }

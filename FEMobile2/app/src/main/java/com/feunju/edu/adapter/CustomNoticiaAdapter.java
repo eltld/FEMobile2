@@ -26,6 +26,7 @@ public class CustomNoticiaAdapter extends ArrayAdapter<Noticia> {
     private LayoutInflater layoutInflater;
     private java.util.logging.Logger logger;
     private String[] imageUrls;
+
     ImageLoader imageLoader;
     NetworkImageView networkImageView;
 
@@ -50,10 +51,10 @@ public class CustomNoticiaAdapter extends ArrayAdapter<Noticia> {
             i++;
         }
         System.out.println("CustonNewsAdapter count : "+listData.size());
-        this.listData=listData;
+       this.listData=listData;
 
         //singleton instance
-        imageLoader= SingletonVolley.getInstance(getContext()).getImageLoader(); //singleton imageLoader
+       imageLoader= SingletonVolley.getInstance(getContext()).getImageLoader(); //singleton imageLoader
 
         layoutInflater=LayoutInflater.from(context);
     }
@@ -83,14 +84,14 @@ public class CustomNoticiaAdapter extends ArrayAdapter<Noticia> {
             convertView = layoutInflater.inflate(R.layout.noticia_single,null);
 
 
-            if(imageLoader==null)
+           if(imageLoader==null)
                 imageLoader= SingletonVolley.getInstance(getContext()).getImageLoader(); //singleton imageLoader
 
 
             holder = new ViewHolder();
             holder.noticiaImageView=(NetworkImageView) convertView.findViewById(R.id.noticia_noticiaImage);
+            holder.noticiaBajada=(TextView)convertView.findViewById(R.id.noticia_noticiaBajada);
             holder.noticiaHead = (TextView) convertView.findViewById(R.id.noticia_noticiaTitulo);
-            holder.noticiaBajada = (TextView) convertView.findViewById(R.id.noticia_noticiaBajada);
             holder.noticiaId=(TextView)convertView.findViewById(R.id.noticia_noticiaId);
             convertView.setTag(holder);
         } else {
@@ -112,9 +113,11 @@ public class CustomNoticiaAdapter extends ArrayAdapter<Noticia> {
             bajada=noticia.getNoticia_bajada().substring(0,60)+"...";
 
 
+
+
         holder.noticiaHead.setText(Html.fromHtml(titulo));
-        holder.noticiaBajada.setText(Html.fromHtml(bajada));
         holder.noticiaId.setText(noticia.getNoticia_id());
+        holder.noticiaBajada.setText(Html.fromHtml(bajada));
         holder.noticiaId.setVisibility(View.GONE);
 
         System.out.println("url "+imageUrls[position]);
@@ -126,7 +129,7 @@ public class CustomNoticiaAdapter extends ArrayAdapter<Noticia> {
 
 
         //envio a cargar asyncTask la image
-       /* if (holder.noticiaImageView != null) {
+        /*if (holder.noticiaImageView != null) {
 
             imageLoader.displayImage(imageUrls[position], holder.noticiaImageView, options);
 
@@ -140,8 +143,8 @@ public class CustomNoticiaAdapter extends ArrayAdapter<Noticia> {
     //representa
     static class ViewHolder {
         TextView noticiaHead;
-        TextView noticiaBajada;
         TextView noticiaId;
+        TextView noticiaBajada;
         NetworkImageView noticiaImageView;
 
     }

@@ -18,4 +18,26 @@
         android:layout_toRightOf="@+id/textView"
         android:layout_toEndOf="@+id/textView" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Eventos"
+        android:id="@+id/btn_evento"
+        android:layout_below="@+id/btn_noticia"
+        android:layout_toRightOf="@+id/textView"
+        android:layout_toEndOf="@+id/textView" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Galleria"
+        android:id="@+id/btn_galeria"
+        android:layout_below="@+id/btn_evento"
+        android:layout_alignLeft="@+id/btn_evento"
+        android:layout_alignStart="@+id/btn_evento"
+        android:layout_marginTop="18dp"
+        android:layout_alignRight="@+id/btn_evento"
+        android:layout_alignEnd="@+id/btn_evento" />
+
 </RelativeLayout>

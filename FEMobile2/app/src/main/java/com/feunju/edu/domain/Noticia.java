@@ -7,13 +7,14 @@ import java.io.Serializable;
 /**
  * Created by David Garcia on 24/02/2015.
  */
-public class Noticia2 implements Serializable{
+public class Noticia implements Serializable{
 
 
 
     private String idNoticia;
     private String tituloNoticia;
     private String bajadaNoticia;
+    private String volantaNoticia;
     private String dateNoticia;
     private String urlImageNoticia;
     private String cuerpoNoticia;
@@ -76,12 +77,21 @@ public class Noticia2 implements Serializable{
         this.imageNoticia = imageNoticia;
     }
 
+    public String getVolantaNoticia() {
+        return volantaNoticia;
+    }
+
+    public void setVolantaNoticia(String volantaNoticia) {
+        this.volantaNoticia = volantaNoticia;
+    }
+
     @Override
     public String toString() {
         return "Noticia{" +
                 "idNoticia='" + idNoticia + '\'' +
                 ", tituloNoticia='" + tituloNoticia + '\'' +
                 ", bajadaNoticia='" + bajadaNoticia + '\'' +
+                ", volantaNoticia='" + volantaNoticia + '\'' +
                 ", dateNoticia='" + dateNoticia + '\'' +
                 ", urlImageNoticia='" + urlImageNoticia + '\'' +
                 ", cuerpoNoticia='" + cuerpoNoticia + '\'' +

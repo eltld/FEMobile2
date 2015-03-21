@@ -2,67 +2,51 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:minHeight="50dp"
+    android:minHeight="20dp"
     android:orientation="horizontal" >
-
 
     <com.android.volley.toolbox.NetworkImageView
         android:id="@+id/noticia_noticiaImage"
-        android:layout_width="120dp"
+        android:padding="0dp"
+        android:layout_width="80dp"
         android:layout_height="70dp"
-        android:layout_alignParentLeft="true"
-        android:src="@drawable/ic_launcher"
-        android:paddingLeft="3dp"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="5dp" />
+
+        />
 
     <TextView
-        android:id="@+id/noticia_noticiaId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="noticiaId"
-        android:layout_below="@+id/noticia_noticiaBajada"
-        android:layout_toRightOf="@+id/textView2"
-        android:layout_toEndOf="@+id/textView2"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp" />
-
-
-    <TextView
+        android:text="New Text"
+        android:textSize="@dimen/noticia_noticiaTitulo"
         android:id="@+id/noticia_noticiaTitulo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="10dp"
-        android:text="Titulo"
-        android:textSize="12dp"
+        android:textColor="@color/list_noticia_titulo"
+        android:fontFamily="sans-serif-condensed"
         android:textStyle="bold"
-        android:typeface="serif"
         android:layout_toRightOf="@+id/noticia_noticiaImage"
-        android:layout_alignBottom="@+id/noticia_noticiaId" />
-
+        android:layout_marginLeft="2dp"
+        android:layout_marginTop="4dp" />
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:fontFamily="sans-serif-condensed"
+        android:textStyle="bold"
+        android:id="@+id/noticia_noticiaId"
+        android:layout_marginLeft="58dp"
+        android:layout_marginStart="58dp"
+        android:layout_toRightOf="@+id/noticia_noticiaTitulo"
+        android:layout_toEndOf="@+id/noticia_noticiaTitulo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:textStyle="normal"
+        android:textSize="@dimen/noticia_noticiaBajada"
         android:id="@+id/noticia_noticiaBajada"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="8dp"
-        android:text="Bajada"
-        android:textSize="10dp"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/noticia_noticiaTitulo"
-        android:layout_alignEnd="@+id/noticia_noticiaTitulo"
-        android:layout_marginTop="5dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/textView2"
-        android:layout_alignTop="@+id/noticia_noticiaImage"
-        android:layout_alignLeft="@+id/noticia_noticiaBajada"
-        android:layout_alignStart="@+id/noticia_noticiaBajada" />
+        android:layout_below="@+id/noticia_noticiaTitulo"
+        android:layout_alignLeft="@+id/noticia_noticiaTitulo"
+        android:layout_alignStart="@+id/noticia_noticiaTitulo" />
 
 </RelativeLayout>

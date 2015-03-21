@@ -66,6 +66,34 @@
             android:icon="@drawable/abc_ic_ab_back_mtrl_am_alpha"
             android:theme="@style/AppTheme">
         </activity>
+        <activity
+            android:name=".activity.EventoListadoActivity"
+            android:label="@string/str_evento"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".activity.EventoDetalleActivity"
+            android:label="@string/str_evento"
+            android:screenOrientation="portrait"
+            android:icon="@drawable/abc_ic_ab_back_mtrl_am_alpha"
+            android:theme="@style/AppTheme">
+        </activity>
+
+        <activity
+            android:name=".activity.GalleryImageActivity"
+            android:label="@string/str_evento"
+            android:screenOrientation="portrait"
+            android:icon="@drawable/abc_ic_ab_back_mtrl_am_alpha"
+            android:theme="@style/AppTheme">
+        </activity>
+
+        <activity
+            android:name=".activity.FullScreenViewActivity"
+            android:label="@string/str_evento"
+            android:screenOrientation="portrait"
+            android:icon="@drawable/abc_ic_ab_back_mtrl_am_alpha"
+            android:theme="@style/AppTheme">
+        </activity>
 
 
 

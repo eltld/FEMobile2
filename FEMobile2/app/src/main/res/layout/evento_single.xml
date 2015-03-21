@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mes"
+        android:textSize="@dimen/evento_eventoTitulo"
+        android:textColor="@color/list_evento_titulo"
+        android:id="@+id/evento_eventoTitulo"
+        android:fontFamily="sans-serif-condensed"
+        android:textStyle="bold"
+        android:layout_below="@+id/evento_eventoVolanta"
+        android:layout_toRightOf="@+id/evento_eventoMes"
+        android:layout_toEndOf="@+id/evento_eventoMes"
+        android:layout_marginLeft="5dp" />
+
+
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:textSize="@dimen/evento_eventoMes"
+            android:textColor="@color/list_evento_mesdia"
+            android:background="@color/list_evento_fondoMes"
+            android:id="@+id/evento_eventoMes"
+            android:layout_marginLeft="17dp"
+            android:layout_marginStart="23dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="5dp"
+            android:gravity="center_horizontal"
+        android:paddingBottom="3dp"
+        android:paddingEnd="3dp"
+        android:paddingRight="3dp"
+        android:paddingLeft="3dp"
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:textSize="@dimen/evento_eventoDia"
+            android:background="@color/list_evento_fondoDia"
+            android:textColor="@color/list_evento_mesdia"
+            android:id="@+id/evento_eventoDia"
+            android:layout_below="@+id/evento_eventoMes"
+            android:layout_alignLeft="@+id/evento_eventoMes"
+            android:layout_alignStart="@+id/evento_eventoMes"
+            android:layout_alignRight="@+id/evento_eventoMes"
+            android:layout_alignEnd="@+id/evento_eventoMes"
+            android:gravity="center_horizontal" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:textSize="@dimen/evento_eventoVolanta"
+        android:textColor="@color/list_evento_fondoDia"
+        android:id="@+id/evento_eventoVolanta"
+        android:layout_alignTop="@+id/evento_eventoMes"
+        android:layout_alignLeft="@+id/evento_eventoTitulo"
+        android:layout_alignStart="@+id/evento_eventoTitulo" />
+
+
+</RelativeLayout>
