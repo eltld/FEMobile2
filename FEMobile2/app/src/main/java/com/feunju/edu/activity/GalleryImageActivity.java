@@ -1,12 +1,10 @@
 package com.feunju.edu.activity;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
-import android.view.View;
 import android.widget.GridView;
 
 import com.android.volley.RequestQueue;

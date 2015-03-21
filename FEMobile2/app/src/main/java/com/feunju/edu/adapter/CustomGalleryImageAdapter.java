@@ -145,7 +145,7 @@ public class CustomGalleryImageAdapter extends ArrayAdapter<GalleryImage> {
             System.out.println("onClick  :"+_postion);
             Intent i = new Intent(getContext(), FullScreenViewActivity.class);
             i.putExtra("position", _postion);
-            _activity.startActivity(i);
+            getContext().startActivity(i);
         }
     }
 
